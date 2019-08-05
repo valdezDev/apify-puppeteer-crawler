@@ -3,7 +3,11 @@ const Apify = require('apify');
 Apify.main(async () => {
 
   const requestQueue = await Apify.openRequestQueue();
+
+  // Use https://www.visithoustontexas.com/event/zumba-in-the-plaza/59011/ in conjunction
+  // with the commented out query selectors in the pageFunction forEach to scrape more detailed data.
   await requestQueue.addRequest({ url: `https://www.visithoustontexas.com/events/` });
+
 
   const crawler = new Apify.PuppeteerCrawler({
       
@@ -44,7 +48,7 @@ Apify.main(async () => {
             address: $event.querySelector('.adrs').innerText,
           });
         });
-          
+
         return data;
 
       };
