@@ -46,6 +46,7 @@ Apify.main(async () => {
             description: $event.querySelector('.desc').innerText,
             dates: $event.querySelector('.dates').innerText,
             address: $event.querySelector('.adrs').innerText,
+            
           });
         });
 
@@ -57,7 +58,7 @@ Apify.main(async () => {
       const data = await page.$$eval('.eventItem', pageFunction);
 
       // Set to evaluate a fully rendered .contentWrapper when scraping individual event pages
-      //const data = await page.$$eval('.contentWrapper', pageFunction);
+      //const data = await page.$$eval('html', pageFunction);
 
       // Store the results to the default dataset.
       await Apify.pushData(data);
@@ -81,5 +82,5 @@ Apify.main(async () => {
 
   await crawler.run();
 
-  console.log('Crawler finished.');
+  console.log('Crawler finished.    ✅');
 });
